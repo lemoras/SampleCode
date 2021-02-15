@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:            
+  api:
+    image: member.api
+    build:
+      dockerfile: src/Member.Api/Dockerfile
+    container_name: member.api
+    networks:
+      online-network:
+        aliases:
+            - member.api
+  
+  db:
+    image: mariadb:10.2
+    ports:
+        - 3306:3306 
+    expose:
+        - 3306
+    container_name: member.db 
+    environment: 
+        MYSQL_ROOT_HOST: '%'
+        MYSQL_ROOT_PASSWORD: nzdBCBuyDKm4y34B
+        MYSQL_DATABASE: member_db
+        MYSQL_USER: sql7338884
+        MYSQL_PASSWORD: K8esL8GKaw
+        MYSQL_PORT: 3306
+    volumes:
+      - member-db-data:/var/lib/mysql
+    networks:
+      online-network:
+        aliases:
+            - member.db
+
+volumes:
+  member-db-data:
+    name: member_db-data
+    driver: local

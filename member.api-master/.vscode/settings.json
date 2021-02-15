@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    ".gateway": true,
+    ".gitattributes": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "docker-compose.yml": true,
+    "service.sh": true
+  }
+}
